@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <header style="text-align: center">
+        <div id="header-image-menu">
+            <img src="{{url_for('static', filename='Predicción_enfermedad_hepática.jpg')}}" width=100%>
+            <h2 id = "image-text">
+                Introducir datos:
+            </h2>
+        </div>
+    </header>
+	<head >
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://designer.igniteui.com/packages/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" href="https://designer.igniteui.com/css/themes/bootstrap3/superhero/infragistics.theme.css">
+		<link rel="stylesheet" href="https://designer.igniteui.com/css/structure/infragistics.css">
+		<!--
+			Update the Ignite UI script references to your licensed copies before deploying.
+			Ignite UI License: https://www.infragistics.com/legal/license/ultimate/
+		-->
+		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+		<script src="https://designer.igniteui.com/js/infragistics.core.js"></script>
+		<script src="https://designer.igniteui.com/js/infragistics.lob.js"></script>
+		<!-- You may remove the datasources.js script if you are not using Designer sample data. -->
+		<script src="https://designer.igniteui.com/js/datasources.js"></script>
+		<script id="code">
+			$(document).ready(function () {
+
+			});
+		</script>
+	</head>
+    <body style="background-color: rgba(176, 187, 194, 0.466);"> 
+        <form name="form", method="POST", style="text-align: center;">
+            <br>
+            Edad: <input type="number" name="Age", placeholder="(Años)" required/>
+            <br><br>
+            Género: <input type="number" name="Gender", placeholder="(0=FEM,1=MASC) " required/>
+            <br><br>
+            TB: <input type="number" step="any" name="TP", placeholder="Proteína Total" required/>
+            <br><br>
+            DB: <input type="number" step="any" name="DB", placeholder="Bilirrubina Directa" required/>
+            <br><br>
+            Alkphos: <input type="number" step="any" name="Alkphos", placeholder="Fosfatasa alcalina" required/>
+            <br><br>
+            Sgpt: <input type="number" step="any" name="Sgpt", placeholder="Alanina Aminotransferasa" required/>
+            <br><br>
+            ALB: <input type="number" step="any" name="ALB", placeholder="Albúmina" required/>
+            <br><br>
+            AG: <input type="number" step="any" name="AG", placeholder="Ratio Albúmina/Globulina" required/>
+            <br><br>
+            <button type="reset" class="btn btn-danger">Limpiar datos</button>
+            <button value="Submit" class="btn btn-success">Resultados</button>
+        </form><br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th style="text-align:center" scope="col">Resultados</th>                    
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% if Resultado == 0 %}
+                    <td style="color:rgb(24, 150, 85); font-weight:600;text-align:center;">Paciente con BAJO riesgo de padecer enfemerdad hepática</td>                            
+                       {% elif Resultado == 1 %}
+                       <td style="color:red; font-weight:600;text-align:center;">Paciente con ALTO riesgo de padecer enfemerdad hepática</td>                                                
+                       {% else %}
+                    <td style="color:red; font-weight:600;"></td>
+                       {% endif %}
+                   </tr>              
+               </tbody>
+             </table>
+    </body>
+</html>
